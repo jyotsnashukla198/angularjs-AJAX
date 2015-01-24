@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+<script src="js/angular.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+<title>Angular js display</title>
+<script>
+var myApp=angular.module("exampleApp",[]);
+myApp.controller("defaultCtrl",function($scope)
+{
+$scope.todos=[
+         {action:"get groceries",complete:false},
+         {action:"call plumber",complete:false},
+         {action:"get doctor",complete:true},
+         {action:"buy running shoes",complete:false},
+         {action:"get flowers",complete:false}
+];
+$scope.viewOption=false;
+$scope.viewFile=function(){
+return $scope.viewOption?"list.html":"table.html";
+}
+
+});
+</script>
+<style>
+.odd{background-color: lightcoral;}
+.even{background-color:lavenderblush;}
+</style>
+</head>
+<body>
+<div ng-controller="defaultCtrl">
+<label>
+check the box for list view otherwise table view
+<input type="checkbox" ng-model="viewOption" name="listDisplay" >
+  </label>
+<ng-include src="viewFile()"></ng>  
+</div>
+</body>
+</html>
